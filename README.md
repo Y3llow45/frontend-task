@@ -1,8 +1,9 @@
 # Northwest Digital Solutions - Frontend Task
 ## Task Description
-Thank you for taking the time to complete this task. 
-This task is designed to test your ability to work with unfamiliar code base. 
-You have to implement CRUD pages for managing banners for a CMS system.
+Thank you for taking the time to complete this task.
+The task is designed to test your ability to work with unfamiliar code base. 
+You have to implement CRUD pages for managing banners for a CMS system. 
+It's base is implemented using React and JoyUI.
 
 Please provide a link to a public github repository.
 Time to complete is 4 days.
@@ -17,9 +18,9 @@ Time to complete is 4 days.
 ## Additional requirements and information
 - Match the existing code style and apply the linter rules.
 - Some components may not look good/work or the code may not be ok. Make sure everything is working as expected.
-- You have all packages that are needed to implement the tasks, you should not install anything additional.
+- You have all packages that are needed to implement the tasks, you do not need to install anything additional.
 - Follow good practices and make sure the code is clean and readable.
 - Keep a good commit history.
 
 ## Bonus Points
--Feel free to make any QOL changes to make the website usability better. Anything is allowed.
+- Feel free to make any QOL changes to make the website usability better. Anything is allowed.
