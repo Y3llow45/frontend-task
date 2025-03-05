@@ -4,6 +4,7 @@ import { PageResponse } from './dto/page.response.ts'
 
 class BannerService {
     private readonly BANNER_KEY = 'banners'
+    public static readonly PAGE_SIZE = 12
 
     async createBanner(banner: BannerDto) {
         this.saveBanners([banner, ...this.listBanners()])
@@ -58,3 +59,4 @@ class BannerService {
 }
 
 export default new BannerService()
+export { BannerService }
