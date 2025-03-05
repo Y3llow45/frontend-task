@@ -14,15 +14,20 @@ export default function Banners() {
 
     useEffect(() => {
         setPageData({ title: 'Banners' })
-        BannerService.getBanners({page: 0, pageSize: BannerServiceClass.PAGE_SIZE})
-            .then((response) => {
-                if(response) {
-                    setCurrentPage(response.pageNumber)
-                    const totalBanners = JSON.parse(localStorage.getItem('banners') || '[]').length
-                    setTotalPages(Math.ceil(totalBanners / BannerServiceClass.PAGE_SIZE))
-                }
-            })
+        updatePagination()
     }, [setPageData])
+
+    const updatePagination = () => {
+        BannerService.getBanners({ page: 0, pageSize: BannerServiceClass.PAGE_SIZE })
+            .then((response) => {
+                if (response) {
+                    setCurrentPage(response.pageNumber);
+                    const totalBanners = JSON.parse(localStorage.getItem('banners') || '[]').length;
+                    setTotalPages(Math.ceil(totalBanners / BannerServiceClass.PAGE_SIZE));
+                }
+          }
+        );
+      }
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage)
@@ -36,14 +41,16 @@ export default function Banners() {
                     BannerService.getBanners({ page: page.page, pageSize: BannerServiceClass.PAGE_SIZE })
                 }
                 mapCard={(banner, deleteItem) => (
-                <BannerCard
-                    key={banner.id}
-                    banner={banner}
-                    delete={async () => {
-                        deleteItem(banner.id!)
-                        BannerService.deleteBanner(banner.id!)
-                          .catch((reason) => console.error(reason))
-                    } } />
+                    <BannerCard
+                        key={banner.id}
+                        banner={banner}
+                        delete={async () => {
+                            deleteItem(banner.id!)
+                            await BannerService.deleteBanner(banner.id!)
+                              .catch((reason) => console.error(reason))
+                            updatePagination()
+                        }}
+                    />
                 )}
             skeletonMap={(_, i) => <BannerCard key={'skeleton-' + i} />} />
             <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
