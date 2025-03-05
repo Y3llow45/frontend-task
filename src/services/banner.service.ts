@@ -42,7 +42,9 @@ class BannerService {
     }
 
     async updateBanner(id: string, banner: BannerDto) {
-        //todo update banner logic
+        const banners = this.listBanners();
+        const updatedBanners = banners.map((b) => b.id === id ? banner : b);
+        this.saveBanners(updatedBanners);
     }
 
     async deleteBanner(id: string) {
