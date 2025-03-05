@@ -4,10 +4,13 @@ import Box from '@mui/joy/Box'
 import IconButton from '@mui/joy/IconButton'
 import { Delete } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import Image from '../Image.tsx'
+import ConfirmModal from '../ConfirmModal.tsx';
 
 export default function BannerCard(props: { banner?: BannerDto; delete?: () => void }) {
     const navigate = useNavigate()
+    const [openConfirm, setOpenConfirm] = useState(false);
 
     return (
         <Grid
@@ -54,6 +57,7 @@ export default function BannerCard(props: { banner?: BannerDto; delete?: () => v
                         variant="outlined"
                         size="sm"
                         sx={{ width: '20%', alignSelf: 'center' }}
+                        onClick={() => setOpenConfirm(true)}
                     >
                         <Delete />
                     </IconButton>
@@ -68,6 +72,12 @@ export default function BannerCard(props: { banner?: BannerDto; delete?: () => v
                         Edit
                     </Button>
                 </CardActions>
+                <ConfirmModal
+                    open={openConfirm}
+                    onClose={() => setOpenConfirm(false)}
+                    confirm={props.delete}
+                    action="delete this banner"
+                />
             </Card>
         </Grid>
     )
