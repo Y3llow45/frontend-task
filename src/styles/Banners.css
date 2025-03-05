@@ -1,0 +1,11 @@
+.pagination {
+    margin-top: 100px !important
+}
+
+.previous {
+    margin-right: 40px !important;
+}
+
+.next {
+    margin-left: 40px !important
+}

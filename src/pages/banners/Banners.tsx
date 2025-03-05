@@ -6,6 +6,7 @@ import { usePageData } from '../../context/page-data/page-data.context.ts'
 import BannerCard from '../../components/banner/BannerCard.tsx'
 import FAB from '../../components/FAB.tsx'
 import { Button, Grid, Typography } from '@mui/joy'
+import '../../styles/Banners.css';
 
 export default function Banners() {
     const { setPageData } = usePageData()
@@ -53,8 +54,9 @@ export default function Banners() {
                     />
                 )}
             skeletonMap={(_, i) => <BannerCard key={'skeleton-' + i} />} />
-            <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+            <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }} className="pagination">
                 <Button
+                    className='previous'
                     disabled={currentPage === 0}
                     onClick={() => handlePageChange(currentPage - 1)}
                 >
@@ -64,6 +66,7 @@ export default function Banners() {
                     Page {currentPage + 1} of {totalPages}
                 </Typography>
                 <Button
+                    className='next'
                     disabled={currentPage >= totalPages - 1}
                     onClick={() => handlePageChange(currentPage + 1)}
                 >
